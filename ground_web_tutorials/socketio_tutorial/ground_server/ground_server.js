@@ -7,8 +7,8 @@ const port = 8081; // any port between 1024 and 65535 should be fair game
 const io = socketIOServer(port);
 
 // create two namespaces
-drone_io = io.of('/drone');
-ui_io = io.of('/ui');
+const drone_io = io.of('/drone');
+const ui_io = io.of('/ui');
 
 drone_io.on('connect', (socket) => {
   console.log("drone connected!");
@@ -29,7 +29,7 @@ ui_io.on('connect', (socket) => {
 const socketIOClient = require('socket.io-client');
 const socket = socketIOClient('http://localhost:'+port+'/drone', { transports: ['websocket'] });
 
-telemetryNumber = 0;
+let telemetryNumber = 0;
 setInterval(() => {
   socket.emit('telemetry', "Fake Telemetry " + telemetryNumber);
   telemetryNumber++;
