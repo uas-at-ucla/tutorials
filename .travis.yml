@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - 9
+  - 8
+  - node
+
+sudo: false
+
+script:
+ - cd ground/socketio/ground_ui
+ - npm i
+ - npm run build
